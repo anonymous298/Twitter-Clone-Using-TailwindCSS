@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter (X)</title>
+    <link rel="stylesheet" href="src/output.css">
+    <style>
+        html {
+            transition: all 0.2s ease-in-out;
+            /* overflow: hidden; */
+        }
+
+        /* For the whole scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+            /* width of vertical scrollbar */
+            height: 12px;
+            /* height of horizontal scrollbar */
+        }
+
+        /* Scrollbar track (background) */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        /* Scrollbar thumb (the draggable part) */
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+
+        /* On hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        .icon {
+            cursor: pointer;
+        }
+
+        input:focus {
+            outline: 0;
+            border: 0;
+        }
+
+        aside::-webkit-scrollbar {
+            width: 7px;
+            /* width of vertical scrollbar */
+            height: 7px;
+            /* height of horizontal scrollbar */
+        }
+    </style>
+</head>
+
+<body class="flex items-center justify-center bg-black overflow-y-auto">
+    <main class="bg-amber-400 w-[90%] flex xl:w-[1124px]">
+        <aside
+            class="h-dvh sticky top-0 bg-blue-600 p-2 flex flex-col justify-between items-center overflow-x-hidden gap-3">
+            <div class="aside-icons flex flex-col items-start gap-3.5">
+                <div class="icon mb-1.5">
+                    <svg fill='white' viewBox="0 0 24 24" aria-hidden="true"
+                        class=" w-9 r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-lrvibr r-m6rgpd r-lrsllp r-1nao33i r-16y2uox r-8kz0gk">
+                        <g>
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                            </path>
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="icon flex gap-3 items-center justify-start hover:bg-gray-800 w-full p-2 pl-1 rounded-3xl">
+                    <svg fill="white" viewBox="0 0 24 24" aria-hidden="true"
+                        class="w-6 max-sm:w-8 r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-lrvibr r-m6rgpd r-1nao33i r-lwhw9o r-cnnz9e">
+                        <g>
+                            <path
+                                d="M21.591 7.146L12.52 1.157c-.316-.21-.724-.21-1.04 0l-9.071 5.99c-.26.173-.409.456-.409.757v13.183c0 .502.418.913.929.913H9.14c.51 0 .929-.41.929-.913v-7.075h3.909v7.075c0 .502.417.913.928.913h6.165c.511 0 .929-.41.929-.913V7.904c0-.301-.158-.584-.408-.758z">
+                            </path>
+                        </g>
+                    </svg>
+                    <p class="font-bold text-white max-xl:hidden">Home</p>
+                </div>
+                <div class="icon flex gap-3 items-center justify-start hover:bg-gray-800 w-full p-2 pl-1 rounded-3xl">
+                    <svg fill="white" viewBox="0 0 24 24" aria-hidden="true"
+                        class="w-6 max-sm:w-8 r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-lrvibr r-m6rgpd r-1nao33i r-lwhw9o r-cnnz9e">
+                        <g>
+                            <path
+                                d="M10.25 3.75c-3.59 0-6.5 2.91-6.5 6.5s2.91 6.5 6.5 6.5c1.795 0 3.419-.726 4.596-1.904 1.178-1.177 1.904-2.801 1.904-4.596 0-3.59-2.91-6.5-6.5-6.5zm-8.5 6.5c0-4.694 3.806-8.5 8.5-8.5s8.5 3.806 8.5 8.5c0 1.986-.682 3.815-1.824 5.262l4.781 4.781-1.414 1.414-4.781-4.781c-1.447 1.142-3.276 1.824-5.262 1.824-4.694 0-8.5-3.806-8.5-8.5z">
+                            </path>
+                        </g>
+                    </svg>
+                    <p class="font-semibold text-white max-xl:hidden">Explore</p>
+                </div>
+                <div class="icon flex gap-3 items-center justify-start hover:bg-gray-800 w-full p-2 pl-1 rounded-3xl">
+                    <svg fill="white" viewBox="0 0 24 24" aria-hidden="true"
+                        class="w-6 max-sm:w-8 r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-lrvibr r-m6rgpd r-1nao33i r-lwhw9o r-cnnz9e">
+                        <g>
+                            <path
+                                d="M19.993 9.042C19.48 5.017 16.054 2 11.996 2s-7.49 3.021-7.999 7.051L2.866 18H7.1c.463 2.282 2.481 4 4.9 4s4.437-1.718 4.9-4h4.236l-1.143-8.958zM12 20c-1.306 0-2.417-.835-2.829-2h5.658c-.412 1.165-1.523 2-2.829 2zm-6.866-4l.847-6.698C6.364 6.272 8.941 4 11.996 4s5.627 2.268 6.013 5.295L18.864 16H5.134z">
+                            </path>
+                        </g>
+                    </svg>
+                    <p class="font-semibold text-white max-xl:hidden">Notifications</p>
+                </div>
+                <div class="icon flex gap-3 items-center justify-start hover:bg-gray-800 w-full p-2 pl-1 rounded-3xl">
+                    <svg fill="white" viewBox="0 0 24 24" aria-hidden="true"
+                        class="w-6 max-sm:w-8 r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-lrvibr r-m6rgpd r-1nao33i r-lwhw9o r-cnnz9e">
+                        <g>
+                            <path
+                                d="M1.998 5.5c0-1.381 1.119-2.5 2.5-2.5h15c1.381 0 2.5 1.119 2.5 2.5v13c0 1.381-1.119 2.5-2.5 2.5h-15c-1.381 0-2.5-1.119-2.5-2.5v-13zm2.5-.5c-.276 0-.5.224-.5.5v2.764l8 3.638 8-3.636V5.5c0-.276-.224-.5-.5-.5h-15zm15.5 5.463l-8 3.636-8-3.638V18.5c0 .276.224.5.5.5h15c.276 0 .5-.224.5-.5v-8.037z">
+                            </path>
+                        </g>
+                    </svg>
+                    <p class="font-semibold text-white max-xl:hidden">Messages</p>
+                </div>
+                <div class="icon flex gap-3 items-center justify-start hover:bg-gray-800 w-full p-2 pl-1 rounded-3xl">
+                    <svg fill="white" viewBox="0 0 33 32" aria-hidden="true"
+                        class="w-6 max-sm:w-8 r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-lrvibr r-m6rgpd r-1nao33i r-lwhw9o r-cnnz9e">
+                        <g>
+                            <path
+                                d="M12.745 20.54l10.97-8.19c.539-.4 1.307-.244 1.564.38 1.349 3.288.746 7.241-1.938 9.955-2.683 2.714-6.417 3.31-9.83 1.954l-3.728 1.745c5.347 3.697 11.84 2.782 15.898-1.324 3.219-3.255 4.216-7.692 3.284-11.693l.008.009c-1.351-5.878.332-8.227 3.782-13.031L33 0l-4.54 4.59v-.014L12.743 20.544m-2.263 1.987c-3.837-3.707-3.175-9.446.1-12.755 2.42-2.449 6.388-3.448 9.852-1.979l3.72-1.737c-.67-.49-1.53-1.017-2.515-1.387-4.455-1.854-9.789-.931-13.41 2.728-3.483 3.523-4.579 8.94-2.697 13.561 1.405 3.454-.899 5.898-3.22 8.364C1.49 30.2.666 31.074 0 32l10.478-9.466">
+                            </path>
+                        </g>
+                    </svg>
+                    <p class="font-semibold text-white max-xl:hidden">Grok</p>
+                </div>
+                <div class="icon flex gap-3 items-center justify-start hover:bg-gray-800 w-full p-2 pl-1 rounded-3xl">
+                    <svg fill="white" viewBox="0 0 24 24" aria-hidden="true"
+                        class="w-6 max-sm:w-8 r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-lrvibr r-m6rgpd r-1nao33i r-lwhw9o r-cnnz9e">
+                        <g>
+                            <path
+                                d="M5.651 19h12.698c-.337-1.8-1.023-3.21-1.945-4.19C15.318 13.65 13.838 13 12 13s-3.317.65-4.404 1.81c-.922.98-1.608 2.39-1.945 4.19zm.486-5.56C7.627 11.85 9.648 11 12 11s4.373.85 5.863 2.44c1.477 1.58 2.366 3.8 2.632 6.46l.11 1.1H3.395l.11-1.1c.266-2.66 1.155-4.88 2.632-6.46zM12 4c-1.105 0-2 .9-2 2s.895 2 2 2 2-.9 2-2-.895-2-2-2zM8 6c0-2.21 1.791-4 4-4s4 1.79 4 4-1.791 4-4 4-4-1.79-4-4z">
+                            </path>
+                        </g>
+                    </svg>
+                    <p class="font-semibold text-white max-xl:hidden">Profile</p>
+                </div>
+                <div class="icon flex gap-3 items-center justify-start hover:bg-gray-800 w-full p-2 pl-1 rounded-3xl">
+                    <svg fill="white" viewBox="0 0 24 24" aria-hidden="true"
+                        class="w-6 max-sm:w-8 r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-lrvibr r-m6rgpd r-1nao33i r-lwhw9o r-cnnz9e">
+                        <g>
+                            <path
+                                d="M3.75 12c0-4.56 3.69-8.25 8.25-8.25s8.25 3.69 8.25 8.25-3.69 8.25-8.25 8.25S3.75 16.56 3.75 12zM12 1.75C6.34 1.75 1.75 6.34 1.75 12S6.34 22.25 12 22.25 22.25 17.66 22.25 12 17.66 1.75 12 1.75zm-4.75 11.5c.69 0 1.25-.56 1.25-1.25s-.56-1.25-1.25-1.25S6 11.31 6 12s.56 1.25 1.25 1.25zm9.5 0c.69 0 1.25-.56 1.25-1.25s-.56-1.25-1.25-1.25-1.25.56-1.25 1.25.56 1.25 1.25 1.25zM13.25 12c0 .69-.56 1.25-1.25 1.25s-1.25-.56-1.25-1.25.56-1.25 1.25-1.25 1.25.56 1.25 1.25z">
+                            </path>
+                        </g>
+                    </svg>
+                    <p class="font-semibold text-white max-xl:hidden">More</p>
+                </div>
+                <!-- <div class="icon flex gap-1  items-center justify-center">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-8 r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-lrvibr r-m6rgpd r-1472mwg r-lrsllp" style="color: rgb(15, 20, 25);"><g><path d="M23 3c-6.62-.1-10.38 2.421-13.05 6.03C7.29 12.61 6 17.331 6 22h2c0-1.007.07-2.012.19-3H12c4.1 0 7.48-3.082 7.94-7.054C22.79 10.147 23.17 6.359 23 3zm-7 8h-1.5v2H16c.63-.016 1.2-.08 1.72-.188C16.95 15.24 14.68 17 12 17H8.55c.57-2.512 1.57-4.851 3-6.78 2.16-2.912 5.29-4.911 9.45-5.187C20.95 8.079 19.9 11 16 11zM4 9V6H1V4h3V1h2v3h3v2H6v3H4z"></path></g></svg>
+                </div> -->
+
+                <div
+                    class="icon bg-white text-center font-bold rounded-4xl pl-15 pr-15 p-3 hover:bg-gray-400 cursor-pointer text-[13.5px] max-xl:p-2 max-xl:rounded-full max-sm:p-3.5">
+                    <p>Post</p>
+                </div>
+
+            </div>
+
+            <div
+                class="aside-profile flex gap-1 p-1 pr-9 items-center max-xl:p-1 hover:bg-gray-800 cursor-pointer rounded-full">
+                <img src="assets/profile-logo.png" alt="logo" class="size-9 rounded-full object-cover max-sm:size-12">
+
+                <div class="profile-text rounded-br-2xl max-xl:hidden w-full whitespace-normal">
+                    <h4 class=" text-white w-full text-[12px] font-bold whitespace-normal ">Muhammad Talha</h4>
+                    <p class=" text-gray-600 w-full text-[12px] whitespace-normal">@Muhamma18802226</p>
+                </div>
+            </div>
+        </aside>
+
+        <section class="flex w-[100%] gap-7 overflow-x-hidden">
+            <div
+                class="section-primary-container w-[60%]  bg-fuchsia-400 max-lg:w-full overflow-y-auto border border-gray-700 overflow-x-hidden">
+                <div class="primary-navbar w-full bg-gray-900 border border-gray-500 flex ">
+                    <div
+                        class="primary-nav-first w-[50%] flex items-center justify-center pt-3 hover:bg-gray-700 cursor-pointer text-white text-[17px] font-bold">
+                        <p class="pb-3 border-b-6 border-blue-500">For you</p>
+                    </div>
+
+                    <div
+                        class="primary-nav-second w-[50%] flex items-center justify-center p-3 hover:bg-gray-600 cursor-pointer text-gray-500 text-[17px] font-bold">
+                        <p>Following</p>
+                    </div>
+                </div>
+
+                <div class="primary-content w-full">
+                    <div class="primary-content-card flex w-full border border-gray-700 gap-2 p-3 pb-0 max-sm:gap-1">
+                        <img src="assets/profile-logo.png" alt="logo" class="size-10 object-cover rounded-full">
+
+                        <div class="card-content w-full">
+                            <input type="text" placeholder="What's happening?"
+                                class="w-full font-semibold p-1 text-[19px]">
+                            <div class="card-text flex gap-1 p-2 items-center border-b border-b-gray-700">
+                                <svg fill="blue" viewBox="0 0 24 24" aria-hidden="true"
+                                    class="w-4 r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-lrvibr r-m6rgpd r-1gs4q39 r-10ptun7 r-1janqcz"
+                                    style="color: rgb(29, 155, 240);">
+                                    <g>
+                                        <path
+                                            d="M12 1.75C6.34 1.75 1.75 6.34 1.75 12S6.34 22.25 12 22.25 22.25 17.66 22.25 12 17.66 1.75 12 1.75zm-.25 10.48L10.5 17.5l-2-1.5v-3.5L7.5 9 5.03 7.59c1.42-2.24 3.89-3.75 6.72-3.84L11 6l-2 .5L8.5 9l5 1.5-1.75 1.73zM17 14v-3l-1.5-3 2.88-1.23c1.17 1.42 1.87 3.24 1.87 5.23 0 1.3-.3 2.52-.83 3.61L17 14z">
+                                        </path>
+                                    </g>
+                                </svg>
+                                <p class="text-blue-700 font-semibold">Everyone can reply</p>
+                            </div>
+                            <div class="card-links-portion flex justify-between p-3 g-2 max-sm:p-2">
+                                <div class="cards-links flex gap-2">
+                                    <svg fill="blue" viewBox="0 0 24 24" aria-hidden="true"
+                                        class="w-6 hover:bg-blue-400 cursor-pointer rounded-full r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-lrvibr r-m6rgpd r-z80fyv r-19wmn03"
+                                        style="color: rgb(29, 155, 240);">
+                                        <g>
+                                            <path
+                                                d="M3 5.5C3 4.119 4.119 3 5.5 3h13C19.881 3 21 4.119 21 5.5v13c0 1.381-1.119 2.5-2.5 2.5h-13C4.119 21 3 19.881 3 18.5v-13zM5.5 5c-.276 0-.5.224-.5.5v9.086l3-3 3 3 5-5 3 3V5.5c0-.276-.224-.5-.5-.5h-13zM19 15.414l-3-3-5 5-3-3-3 3V18.5c0 .276.224.5.5.5h13c.276 0 .5-.224.5-.5v-3.086zM9.75 7C8.784 7 8 7.784 8 8.75s.784 1.75 1.75 1.75 1.75-.784 1.75-1.75S10.716 7 9.75 7z">
+                                            </path>
+                                        </g>
+                                    </svg>
+                                    <svg fill="blue" viewBox="0 0 24 24" aria-hidden="true"
+                                        class="w-6 hover:bg-blue-400 cursor-pointer rounded-full r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-lrvibr r-m6rgpd r-z80fyv r-19wmn03"
+                                        style="color: rgb(29, 155, 240);">
+                                        <g>
+                                            <path
+                                                d="M3 5.5C3 4.119 4.12 3 5.5 3h13C19.88 3 21 4.119 21 5.5v13c0 1.381-1.12 2.5-2.5 2.5h-13C4.12 21 3 19.881 3 18.5v-13zM5.5 5c-.28 0-.5.224-.5.5v13c0 .276.22.5.5.5h13c.28 0 .5-.224.5-.5v-13c0-.276-.22-.5-.5-.5h-13zM18 10.711V9.25h-3.74v5.5h1.44v-1.719h1.7V11.57h-1.7v-.859H18zM11.79 9.25h1.44v5.5h-1.44v-5.5zm-3.07 1.375c.34 0 .77.172 1.02.43l1.03-.86c-.51-.601-1.28-.945-2.05-.945C7.19 9.25 6 10.453 6 12s1.19 2.75 2.72 2.75c.85 0 1.54-.344 2.05-.945v-2.149H8.38v1.032H9.4v.515c-.17.086-.42.172-.68.172-.76 0-1.36-.602-1.36-1.375 0-.688.6-1.375 1.36-1.375z">
+                                            </path>
+                                        </g>
+                                    </svg>
+                                    <svg fill="blue" viewBox="0 0 33 32" aria-hidden="true"
+                                        class="w-6 hover:bg-blue-400 cursor-pointer rounded-full r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-lrvibr r-m6rgpd r-z80fyv r-19wmn03"
+                                        style="color: rgb(29, 155, 240);">
+                                        <g>
+                                            <path
+                                                d="M12.745 20.54l10.97-8.19c.539-.4 1.307-.244 1.564.38 1.349 3.288.746 7.241-1.938 9.955-2.683 2.714-6.417 3.31-9.83 1.954l-3.728 1.745c5.347 3.697 11.84 2.782 15.898-1.324 3.219-3.255 4.216-7.692 3.284-11.693l.008.009c-1.351-5.878.332-8.227 3.782-13.031L33 0l-4.54 4.59v-.014L12.743 20.544m-2.263 1.987c-3.837-3.707-3.175-9.446.1-12.755 2.42-2.449 6.388-3.448 9.852-1.979l3.72-1.737c-.67-.49-1.53-1.017-2.515-1.387-4.455-1.854-9.789-.931-13.41 2.728-3.483 3.523-4.579 8.94-2.697 13.561 1.405 3.454-.899 5.898-3.22 8.364C1.49 30.2.666 31.074 0 32l10.478-9.466">
+                                            </path>
+                                        </g>
+                                    </svg>
+                                    <svg fill="blue" viewBox="0 0 24 24" aria-hidden="true"
+                                        class="w-6 hover:bg-blue-400 cursor-pointer rounded-full max-sm:hidden r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-lrvibr r-m6rgpd r-z80fyv r-19wmn03"
+                                        style="color: rgb(29, 155, 240);">
+                                        <g>
+                                            <path
+                                                d="M6 5c-1.1 0-2 .895-2 2s.9 2 2 2 2-.895 2-2-.9-2-2-2zM2 7c0-2.209 1.79-4 4-4s4 1.791 4 4-1.79 4-4 4-4-1.791-4-4zm20 1H12V6h10v2zM6 15c-1.1 0-2 .895-2 2s.9 2 2 2 2-.895 2-2-.9-2-2-2zm-4 2c0-2.209 1.79-4 4-4s4 1.791 4 4-1.79 4-4 4-4-1.791-4-4zm20 1H12v-2h10v2zM7 7c0 .552-.45 1-1 1s-1-.448-1-1 .45-1 1-1 1 .448 1 1z">
+                                            </path>
+                                        </g>
+                                    </svg>
+                                    <svg fill="blue" viewBox="0 0 24 24" aria-hidden="true"
+                                        class="w-6 hover:bg-blue-400 cursor-pointer rounded-full r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-lrvibr r-m6rgpd r-z80fyv r-19wmn03"
+                                        style="color: rgb(29, 155, 240);">
+                                        <g>
+                                            <path
+                                                d="M8 9.5C8 8.119 8.672 7 9.5 7S11 8.119 11 9.5 10.328 12 9.5 12 8 10.881 8 9.5zm6.5 2.5c.828 0 1.5-1.119 1.5-2.5S15.328 7 14.5 7 13 8.119 13 9.5s.672 2.5 1.5 2.5zM12 16c-2.224 0-3.021-2.227-3.051-2.316l-1.897.633c.05.15 1.271 3.684 4.949 3.684s4.898-3.533 4.949-3.684l-1.896-.638c-.033.095-.83 2.322-3.053 2.322zm10.25-4.001c0 5.652-4.598 10.25-10.25 10.25S1.75 17.652 1.75 12 6.348 1.75 12 1.75 22.25 6.348 22.25 12zm-2 0c0-4.549-3.701-8.25-8.25-8.25S3.75 7.451 3.75 12s3.701 8.25 8.25 8.25 8.25-3.701 8.25-8.25z">
+                                            </path>
+                                        </g>
+                                    </svg>
+                                    <svg fill="blue" viewBox="0 0 24 24" aria-hidden="true"
+                                        class="w-6 hover:bg-blue-400 cursor-pointer rounded-full max-sm:hidden r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-lrvibr r-m6rgpd r-z80fyv r-19wmn03"
+                                        style="color: rgb(29, 155, 240);">
+                                        <g>
+                                            <path
+                                                d="M6 3V2h2v1h6V2h2v1h1.5C18.88 3 20 4.119 20 5.5v2h-2v-2c0-.276-.22-.5-.5-.5H16v1h-2V5H8v1H6V5H4.5c-.28 0-.5.224-.5.5v12c0 .276.22.5.5.5h3v2h-3C3.12 20 2 18.881 2 17.5v-12C2 4.119 3.12 3 4.5 3H6zm9.5 8c-2.49 0-4.5 2.015-4.5 4.5s2.01 4.5 4.5 4.5 4.5-2.015 4.5-4.5-2.01-4.5-4.5-4.5zM9 15.5C9 11.91 11.91 9 15.5 9s6.5 2.91 6.5 6.5-2.91 6.5-6.5 6.5S9 19.09 9 15.5zm5.5-2.5h2v2.086l1.71 1.707-1.42 1.414-2.29-2.293V13z">
+                                            </path>
+                                        </g>
+                                    </svg>
+                                    <svg fill="blue" viewBox="0 0 24 24" aria-hidden="true"
+                                        class="w-6 hover:bg-blue-400 cursor-pointer rounded-full max-sm:hidden r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-lrvibr r-m6rgpd r-z80fyv r-19wmn03"
+                                        style="color: rgb(29, 155, 240);">
+                                        <g>
+                                            <path
+                                                d="M12 7c-1.93 0-3.5 1.57-3.5 3.5S10.07 14 12 14s3.5-1.57 3.5-3.5S13.93 7 12 7zm0 5c-.827 0-1.5-.673-1.5-1.5S11.173 9 12 9s1.5.673 1.5 1.5S12.827 12 12 12zm0-10c-4.687 0-8.5 3.813-8.5 8.5 0 5.967 7.621 11.116 7.945 11.332l.555.37.555-.37c.324-.216 7.945-5.365 7.945-11.332C20.5 5.813 16.687 2 12 2zm0 17.77c-1.665-1.241-6.5-5.196-6.5-9.27C5.5 6.916 8.416 4 12 4s6.5 2.916 6.5 6.5c0 4.073-4.835 8.028-6.5 9.27z">
+                                            </path>
+                                        </g>
+                                    </svg>
+                                </div>
+
+                                <button
+                                    class="font-bold text-[15px] bg-white p-1.5 pl-4 pr-4 rounded-4xl cursor-pointer hover:bg-gray-400">Post</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-secondary-container w-[40%]  bg-orange-400 relative max-lg:hidden overflow-y-auto">
+                <div class="secondary-navbar bg-gray-900 p-2 sticky top-0 z-10">
+                    <div class="secondary-nav-search flex gap-2 border-1 border-gray-500 p-2 rounded-4xl">
+                        <svg fill="gray" viewBox="0 0 24 24" aria-hidden="true"
+                            class=" w-4.5 r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-lrvibr r-m6rgpd r-1tjplnt r-1bwzh9t r-10ptun7 r-2dysd3 r-1janqcz">
+                            <g>
+                                <path
+                                    d="M10.25 3.75c-3.59 0-6.5 2.91-6.5 6.5s2.91 6.5 6.5 6.5c1.795 0 3.419-.726 4.596-1.904 1.178-1.177 1.904-2.801 1.904-4.596 0-3.59-2.91-6.5-6.5-6.5zm-8.5 6.5c0-4.694 3.806-8.5 8.5-8.5s8.5 3.806 8.5 8.5c0 1.986-.682 3.815-1.824 5.262l4.781 4.781-1.414 1.414-4.781-4.781c-1.447 1.142-3.276 1.824-5.262 1.824-4.694 0-8.5-3.806-8.5-8.5z">
+                                </path>
+                            </g>
+                        </svg>
+                        <input type="text" placeholder="Search" class="text-white font-medium w-full">
+                    </div>
+                </div>
+
+                <div class="secondary-content sticky top-[100vh]"> Talha Lorem ipsum dolor sit amet consectetur,
+                    adipisicing elit. Sed ut earum iure impedit aut quasi eum, quis totam sint reiciendis accusamus est
+                    quod id voluptates atque blanditiis distinctio deleniti sapiente eius labore incidunt. Praesentium
+                    velit suscipit corporis dolorum quisquam iste vitae amet ea dicta. Culpa autem ad at odit
+                    exercitationem explicabo expedita soluta delectus tempore quas aliquam eos quis tenetur quaerat eius
+                    optio, magnam ex maxime aspernatur labore perspiciatis doloribus! Pariatur, optio ad itaque
+                    necessitatibus repudiandae tempora hic iure vitae sapiente odio architecto voluptatibus porro
+                    praesentium quasi recusandae, impedit modi vero voluptates saepe ratione dolores nihil aspernatur
+                    ipsa? Nostrum fuga dicta doloribus! Ullam vitae vel cumque enim omnis aliquam delectus inventore
+                    quidem, ex aspernatur asperiores eius saepe distinctio officia natus autem accusantium voluptas sit
+                    atque nisi rerum, molestias, quia nesciunt. Incidunt, optio nemo maxime enim debitis ipsam porro a
+                    tenetur illum dolores ab reiciendis esse accusamus impedit est veritatis, laboriosam ratione quo
+                    molestias magni voluptate commodi numquam natus asperiores! Rerum, fugit. Aspernatur eos doloremque
+                    officiis sunt cum rerum vel, hic veritatis iste nam vitae beatae ut facere dicta dignissimos
+                    laboriosam ab distinctio necessitatibus pariatur. Eos quos dolores cupiditate, est impedit fugiat
+                    ullam voluptatum mollitia magnam cum nemo sint placeat reiciendis ab aut numquam eveniet rem veniam
+                    libero temporibus, accusamus recusandae! Reprehenderit quia incidunt quae suscipit corporis
+                    voluptatibus nobis neque natus qui, ex optio quasi quisquam aut iste modi eligendi enim cum,
+                    temporibus atque illum, quidem dolor excepturi placeat? Nam repellat quasi in error molestias earum
+                    possimus numquam, voluptatem, perspiciatis ratione hic doloribus dignissimos sapiente nisi fugit
+                    consectetur nostrum! Excepturi consequatur dolorum ratione explicabo. Ratione exercitationem eius
+                    recusandae sit eligendi iusto reiciendis hic pariatur rem et, laborum, mollitia dignissimos minima!
+                    Et ipsam sapiente beatae ratione repudiandae dolor porro asperiores, aliquid commodi nobis nostrum
+                    qui nam explicabo error iure distinctio minus assumenda suscipit aspernatur aliquam nesciunt? Veniam
+                    magni commodi sequi ipsum libero numquam cum laudantium saepe iure necessitatibus pariatur,
+                    voluptate eos, ut fuga. Sint facere maiores doloremque mollitia itaque, deserunt temporibus
+                    consectetur, quisquam, veniam sunt vero optio incidunt alias provident adipisci atque id eum
+                    accusantium magni dolor? Iusto quasi enim rerum impedit alias cum, recusandae fugiat vel. Totam,
+                    voluptas inventore. Tempora, amet quam, qui accusantium ea at, reiciendis iure quas officiis dolores
+                    earum commodi vel nobis? Aperiam accusantium inventore adipisci odit odio ad a animi ut sint culpa
+                    totam esse exercitationem pariatur magni, in consectetur id assumenda ab commodi aliquam. Eos
+                    tempore dolores ut excepturi ea natus explicabo, dolore architecto aspernatur unde a autem odio
+                    corrupti vel tenetur earum saepe! Blanditiis odit voluptate error quisquam accusantium, unde maxime
+                    nam cumque quo ullam consequuntur, hic in nisi commodi quaerat, quis vel nihil voluptatem ea eaque
+                    alias facilis perspiciatis ab illum! Neque a sapiente, doloribus inventore quam beatae quidem ullam,
+                    nulla, vero nisi ipsum soluta odit ratione dolorem asperiores minus error in voluptas ab rem
+                    perspiciatis quo iure temporibus. Ea hic rem provident iure est ex et modi dignissimos sequi, id
+                    itaque veritatis atque. Pariatur quae ipsum voluptas consequatur veniam et? Corrupti ut officiis
+                    asperiores ad cumque hic aperiam nisi dignissimos eum aliquid corporis totam architecto quasi ex
+                    optio dicta nesciunt pariatur voluptas, eius illum earum? Ipsam doloribus iste similique? At tempora
+                    eaque recusandae quaerat! Dolores, maiores. Error impedit, nulla similique corporis ex vitae saepe
+                    quas soluta dolorum vero sed voluptas id sapiente suscipit! Delectus dolorum et aspernatur nostrum
+                    ut accusamus nobis aliquid amet? Illo reprehenderit placeat deserunt incidunt sed molestiae dolores
+                    sequi ut voluptas suscipit inventore ratione corrupti maxime exercitationem excepturi numquam, modi
+                    eveniet? Sint quibusdam delectus modi, cupiditate aliquid fuga vitae architecto repudiandae qui
+                    illum possimus, eum eaque repellat quos pariatur iusto natus mollitia nemo. Totam reprehenderit
+                    aliquam tenetur blanditiis quaerat. Quas maiores, iusto omnis reprehenderit magni beatae officiis ad
+                    modi! Blanditiis, deleniti beatae enim reprehenderit dolorem debitis et optio exercitationem fugit
+                    veniam quis amet illo, possimus minus aliquid earum? Nemo suscipit laudantium quisquam fugit
+                    laboriosam, impedit iste in iure? Ipsa totam est voluptates numquam soluta? Saepe eum labore odit
+                    ab, veritatis et libero ad necessitatibus aliquam voluptates aspernatur, eligendi illo aperiam non
+                    pariatur impedit? Veritatis saepe nemo provident odio fugit pariatur voluptas, fugiat earum ullam
+                    libero architecto, distinctio sequi vitae aut? Deleniti hic qui, facere corrupti quae odio
+                    consectetur deserunt esse itaque atque. Fugiat, velit facilis ut dolorem deserunt est reiciendis
+                    autem amet, numquam, vel minima? Repudiandae, expedita! Necessitatibus officiis minima voluptatum
+                    consequatur voluptates nemo aspernatur voluptatibus doloremque atque, accusantium aliquid quos et
+                    consectetur error quae aut suscipit sint, voluptas dicta possimus accusamus magnam ducimus sequi
+                    debitis. Voluptatum tenetur natus aperiam similique obcaecati optio quisquam, est corrupti vel illo
+                    placeat vero amet nostrum sequi consequuntur, explicabo voluptatibus architecto. Nulla soluta
+                    perspiciatis deserunt quo asperiores est eius. Placeat repellat doloribus ea inventore ducimus,
+                    aliquam aliquid accusantium! Rem facere nostrum, fugiat omnis itaque ratione? Accusantium ratione
+                    dicta nesciunt, cupiditate quos, dolore officiis quaerat excepturi assumenda perferendis enim
+                    tempora ut cumque incidunt? Similique, perspiciatis corporis voluptas error nemo quidem qui
+                    excepturi praesentium, earum dignissimos nulla nostrum, autem sint dicta id quod exercitationem
+                    quos? Perferendis, rem consequatur? Nesciunt harum officia soluta minus eius doloremque doloribus?
+                    Unde deserunt obcaecati inventore praesentium ipsum ratione asperiores minima ea ullam, totam
+                    dolorem soluta at nisi, est quaerat dolores, eaque enim voluptatem voluptatum facilis repellat
+                    cumque. Dolorum aliquid, fuga, alias consectetur sequi doloremque beatae dignissimos quaerat,
+                    officia sunt nam. Illum a dolore placeat iusto debitis omnis nemo animi fugit, odit officia minus
+                    repellendus! Esse, aut earum numquam a sint iste quia est voluptas ea dicta facere blanditiis
+                    voluptatem, doloribus nihil, dignissimos odio hic tenetur aspernatur? Odio repellat quae totam
+                    minima vero! Rem temporibus autem sit inventore id distinctio nam delectus ea. Error, corrupti
+                    similique doloribus autem temporibus quo ut consequatur dolore. Cupiditate laboriosam eos magni
+                    delectus voluptatem? Suscipit et non dolores eos amet est nulla. Eligendi dolore blanditiis sequi
+                    mollitia doloremque tempora odit molestiae repellendus. Debitis ea, voluptatum optio reiciendis
+                    porro repellendus neque delectus accusantium! Perspiciatis, eveniet asperiores molestias aliquam
+                    modi est quae. Quasi quisquam maiores, accusamus cumque mollitia sed incidunt commodi debitis sunt
+                    explicabo corrupti similique repellendus, reprehenderit omnis!</div>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
