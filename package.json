@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build" : "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch"
+    "build": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch",
+    "dev" : "vite"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
   "homepage": "https://github.com/anonymous298/Twitter-Clone-Using-TailwindCSS#readme",
   "dependencies": {
     "@tailwindcss/cli": "^4.1.8",
-    "tailwindcss": "^4.1.8"
+    "tailwindcss": "^4.1.8",
+    "vite": "^6.3.5"
   }
 }
